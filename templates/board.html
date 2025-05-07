@@ -211,21 +211,21 @@
     <main class="main">
       <div w3-include-html="../templates/sidebar.html" id="sidebarContainer"></div>
       <div class="content">
-        <div class="board">
-          <div class="board-upper-line">
+        <div class="board display-center">
+          <div class="board-upper-line align-center">
             <div class="mobile-title-and-btn">
             <p class="board-title">Board</p>
             <img onclick="openTaskOverlay(0)" onmouseover="toggleMobileTaskAddBtn(event)" onmouseout="toggleMobileTaskAddBtn(event)" class="mobile-add-task-btn" id="mobileAddTaskBtn" src="../img/mobile_add_task_btn.png" alt="add task">
             </div>
-            <div class="add-task-buttons-wrapper">
-              <div class="search-container">
+            <div class="add-task-buttons-wrapper display-center">
+              <div class="search-container align-center">
                 <input oninput="searchTasks()" onblur="bluredSearchContainer()" onfocus="focusedSearchContainer()" type="text" class="search-tasks-input" id="searchTasksInput" placeholder="Search..." />
-                <div class="search-loop">
+                <div class="search-loop display-center">
                   <div class="vertical-bar"></div>
                   <img class="search-loop-img" src="../img/search.png" alt="Search Loop Image" class="loop-image" />
                 </div>
               </div>
-              <button onclick="openTaskOverlay(0)" class="add-task-button">
+              <button onclick="openTaskOverlay(0)" class="add-task-button display-center">
                 <p class="add-task-button-text">Add Task</p>
                 <img src="../img/add-white.png" alt="add" />
               </button>
@@ -233,7 +233,7 @@
           </div>
           <div class="board-all-tasks-section">
             <div class="board-section-column">
-              <div class="board-column-control">
+              <div class="board-column-control align-center">
                 <p class="board-section-title">To do</p>
                 <img onclick="openTaskOverlay(0)" onmouseover="hoveredAddTaskIcon(0)" onmouseout="normalAddTaskIcon(0)" class="new-board-task" src="../img/add_task_in_board.png" alt="" />
               </div>
@@ -241,7 +241,7 @@
               </div>
             </div>
             <div class="board-section-column">
-              <div class="board-column-control">
+              <div class="board-column-control align-center">
                 <p class="board-section-title">In progress</p>
                 <img onclick="openTaskOverlay(1)" onmouseover="hoveredAddTaskIcon(1)" onmouseout="normalAddTaskIcon(1)" class="new-board-task" src="../img/add_task_in_board.png" alt="" />
               </div>
@@ -249,14 +249,14 @@
               </div>
             </div>
             <div class="board-section-column">
-              <div class="board-column-control">
+              <div class="board-column-control align-center">
                 <p class="board-section-title">Await feedback</p>
                 <img onclick="openTaskOverlay(2)" onmouseover="hoveredAddTaskIcon(2)" onmouseout="normalAddTaskIcon(2)" class="new-board-task" src="../img/add_task_in_board.png" alt="" />
               </div>
               <div class="tasks-container" id="tasksContainer-2" ondragover="allowDrop(event)" ondrop="moveElementTo(event, this)"></div>
             </div>
             <div class="board-section-column">
-              <div class="board-column-control">
+              <div class="board-column-control align-center">
                 <p class="board-section-title">Done</p>
               </div>
               <div class="tasks-container" id="tasksContainer-3" ondragover="allowDrop(event)" ondrop="moveElementTo(event, this)"></div>

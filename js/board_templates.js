@@ -1,22 +1,22 @@
 function emptyColumnTemplate(text) {
-    return `                <div class="empty-column">
+    return `                <div class="empty-column display-center">
                   <span>No tasks ${text}</span>
                 </div>`;
 }
 
 function taskTemplate(task) {
-    return `                <div id="taskBody${task.id}" class="task-body" draggable="true" ondragstart="startDragging(${task.id}, event)" ondrag="dragMove(${task.id}, event)" ondragend="endDragging(${task.id}, event)" onclick="openTaskInfoOverlay(${encodeTask(task)})">
+    return `                <div id="taskBody${task.id}" class="task-body justify-center" draggable="true" ondragstart="startDragging(${task.id}, event)" ondrag="dragMove(${task.id}, event)" ondragend="endDragging(${task.id}, event)" onclick="openTaskInfoOverlay(${encodeTask(task)})">
                   <div class="task-category">${renderCategory(task)}</div>
                   <h3 class="task-title">${task.title}</h2>
                     <p class="task-description">${task.description}</p>
-                    <div class="progress-section">
+                    <div class="progress-section align-center">
                       <div class="progress-container">
                        <div class="progress-bar" id="progressBar"></div>
                       </div>
                       <span class="tasks-done"> 0/${renderSubtasksAmount(task)} Subtasks</span>
                     </div>
-                    <div class="user-task-footer">
-                      <div class="contacts-assigned">${renderInitials(task)}</div>
+                    <div class="user-task-footer align-center">
+                      <div class="contacts-assigned align-center">${renderInitials(task)}</div>
                       <img class='priority-png' src="${renderPriorityIcon(task)}">
                     </div>
                 </div>`;
@@ -67,7 +67,7 @@ function editStateOverlayTemplate(task) {
 }
 
 function tasksDialogTemplate() {
-    return `      <div id="overlayDialogBoard" onclick="event.stopPropagation()">
+    return `      <div id="overlayDialogBoard" class="justify-center" onclick="event.stopPropagation()">
         <div class="content-in-main">
          <div class="task-overlay-header">
           <h1 class="add-task-page-title">Add Task</h1>
