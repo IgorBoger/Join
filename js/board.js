@@ -111,7 +111,6 @@ async function renderTasksAwaitFeedback() {
         container.innerHTML = emptyColumnTemplate('Await Feedback');
         return;
     }
-
     for (let i = 0; i < tasks.length; i++) {
         const task = tasks[i];
 
@@ -241,8 +240,6 @@ function toggleEditBtn(event) {
 
 function renderDetailedTask(task) {
     const overlay = document.getElementById('taskInfoOverlay');
-    //overlay.innerHTML = '';
-    //overlay.innerHTML = taskDetailTemplate(task);
 }
 
 function encodeTask(task) {
@@ -252,7 +249,6 @@ function encodeTask(task) {
 function formatDate(dateString) {
     const [year, month, day] = dateString.split('-');
     return `${day}/${month}/${year}`;
-
 }
 
 function capitalize(word) {
@@ -273,7 +269,6 @@ function loopTaskContacts(task) {
 function loopTaskSubtasks(task) {
     let templateHTML = '';
     if (!task.subtasks || typeof task.subtasks !== 'object') return;
-
     const subtasks = Object.values(task.subtasks);
     if (subtasks.length === 0) return;
     for (let i = 0; i < subtasks.length; i++) {
@@ -293,7 +288,6 @@ function toggleMobileTaskAddBtn(event) {
 function searchTasks() {
     const tasks = document.querySelectorAll('.task-body');
     const input = document.getElementById('searchTasksInput').value.toLowerCase();
-
     for (let i = 0; i < tasks.length; i++) {
         const title = tasks[i].querySelector('.task-title').innerText.toLowerCase();
         if (title.includes(input)) {

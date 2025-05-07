@@ -1,6 +1,7 @@
 function allowDrop(ev) {
     ev.preventDefault();
 }
+
 let draggedTaskNum = 0;
 let dragStartX = 0;
 let dragStartY = 0;
@@ -8,26 +9,21 @@ let currentX = 0;
 let currentY = 0;
 let rotation = 0;
 
-
 function startDragging(id, ev) {
     const task = document.getElementById(`taskBody${id}`);
     draggedTaskNum = id;
     dragStartX = ev.clientX;
     dragStartY = ev.clientY;
-
     task.style.position = 'absolute';
     task.style.zIndex = '1000';
     task.style.boxShadow = '0 8px 20px rgba(0,0,0,0.2)';
     task.style.transform = 'scale(1.1)';
-
     setTimeout(() => {
         task.style.pointerEvents = 'none';
     }, 100);
-
     const img = new Image();
-    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCI+PC9zdmc+'; // 1x1 transparent SVG
+    img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMXB4IiBoZWlnaHQ9IjFweCI+PC9zdmc+'; 
     ev.dataTransfer.setDragImage(img, 0, 0);
-
 }
 
 function dragMove(id, ev) {
@@ -110,7 +106,6 @@ function checkNewColumn(container) {
             return 'done/';
         default: 
             return 'toDo/';
-
     }
 }
 
