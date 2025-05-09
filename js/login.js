@@ -7,37 +7,21 @@ window.addEventListener('DOMContentLoaded', () => {
         main.classList.add('fade-main');
         footer.classList.add('fade-footer');
     }
-
-
     let splash = document.querySelector('.splash-logo-container');
     if (splash) {
         splash.style.pointerEvents = 'none';
         splash.style.zIndex = '0';
     }
-
 });
-
 
 function guestLogin() {
     const guest = 'Guest' ;
     localStorage.setItem('user', JSON.stringify({name: guest, email: 'guest@example.com'}));
     console.log("Guest is logged in");
-    
-
     setTimeout(() => {
         window.location.href = "../templates/summary.html";
     }, 300);
-
-
-
-    
-    // Gast - User darf z.B.keine Kontakte speichern
-    // Gast - User darf nur Board lesen, aber nicht bearbeiten
 }
-
-
-
-
 
 function storeLogInData() {
     const inputEmail = document.getElementById('loginEmail').value.trim();
@@ -94,13 +78,11 @@ async function getCurrentTime() {
     return hours;
   }
   
-  
   async function updateGreeting() {
     const hour = await getCurrentTime();
     showCurrentGreeting(hour);
   }
 
-  
   function showCurrentGreeting(hour) {
     const container = document.getElementById('logedInGreeting');
     let greeting;

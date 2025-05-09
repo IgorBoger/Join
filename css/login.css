@@ -28,7 +28,6 @@
     animation-delay: 1.1s;
 }
 
-
 @keyframes fadeOutSplash {
     from {
         background-color: rgb(246, 247, 248);
@@ -50,7 +49,6 @@
     z-index: 10;
 }
 
-/* Neues Ziel: relative Position für Endzustand */
 @keyframes slideLogo {
     0% {
         top: 50%;
@@ -79,18 +77,15 @@
     }
 }
 
-/* Normaler Header-Inhalt; dieser wird mit einer Fade-In-Animation eingeblendet */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-
 .signup-container a {
     font-weight: bold;
     margin-left: 12px;
-
     flex: auto;
     background-color: rgb(42, 54, 71);
     color: white;
