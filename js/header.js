@@ -34,7 +34,6 @@ async function searchForContactInitial(email) {
 
     const match = contacts.find(contact => contact.email === email);
     return match?.icon?.initial;
-
 }
 
 
