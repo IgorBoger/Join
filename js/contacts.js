@@ -1,27 +1,24 @@
 async function contactsOnLoad() {
   w3.includeHTML();
-
-    const waitForInclude = () => new Promise((resolve) => {
-        const checkExist = setInterval(() => {
-          const sidebarLoaded = document.querySelector('#sidebar');
-          const headerLoaded = document.querySelector('#header');
-          if (sidebarLoaded && headerLoaded) {
-            clearInterval(checkExist);
-            resolve();
-          }
-        }, 50);
-      });
-    try {
+  const waitForInclude = () => new Promise((resolve) => {
+    const checkExist = setInterval(() => {
+      const sidebarLoaded = document.querySelector('#sidebar');
+      const headerLoaded = document.querySelector('#header');
+      if (sidebarLoaded && headerLoaded) {
+        clearInterval(checkExist);
+        resolve();
+      }
+    }, 50);
+  });
+  try {
     await waitForInclude();
     markCurrentPage();
-    ifGuestShowDropdownHelp(); 
+    ifGuestShowDropdownHelp();
     adjustInitialAfterLogin();
     renderContacts();
     findUserEmail();
-
     adjustHelpForMobile();
     window.addEventListener('resize', adjustHelpForMobile);
-
   } catch (error) {
     console.log('error in contactsOnLoad()')
   }
@@ -80,8 +77,7 @@ const basicContacts = [
   }
 ];
 
-let contactsArray = [
-];
+let contactsArray = [];
 
 const bgImages = [
   "../img/variante1.png",
@@ -105,10 +101,8 @@ const bgImages = [
   "../img/variante15.png",
 ];
 
-
 let currentContact = null;
 let detailViewOpen = false;
-
 
 async function renderContacts() {
   document.querySelector('.spinner-overlay').style.display = "block";
@@ -116,16 +110,14 @@ async function renderContacts() {
     contactsArray = [];
     await saveBasicContacts();
     await saveContactsToArray();
-    contactsArray.sort((a, b) => a.displayName.localeCompare(b.displayName)); // Sort by displayName
+    contactsArray.sort((a, b) => a.displayName.localeCompare(b.displayName));
     const container = document.querySelector(".contacts-list");
     if (!container) return;
-  
     const groups = {};
     contactsArray.forEach((c) => {
-      const letter = c.displayName[0].toUpperCase(); // Use displayName for grouping
+      const letter = c.displayName[0].toUpperCase();
       (groups[letter] = groups[letter] || []).push(c);
     });
-  
     container.innerHTML = Object.keys(groups)
       .sort()
       .map((letter) => {
@@ -146,7 +138,6 @@ async function renderContacts() {
 
 function getInitials(name) {
   const cleanName = name.replace(/ \(You\)$/, '');
-
   const parts = cleanName.split(" ").filter(Boolean);
   if (parts.length === 0) return "";
   if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
@@ -154,22 +145,10 @@ function getInitials(name) {
 }
 
 function getContactVars(c) {
-    let initials = getInitials(c.name);
-    let bg = getBackgroundForName(c.name);
-    saveContactIconInFireBase(c, initials, bg);
-    return {initials, bg};
-}
-
-function generateContactHTML(c, vars) {
-  return `<div class="contact-item" onclick="openContactItem('${c.name}', '${c.email}', '${c.phone}'); contactItemClicked(this)">
-  <div class="contact-initials" style="background-image:url('${vars.bg}'); background-size:cover; background-position:center;">
-          ${vars.initials}
-      </div>
-      <div class="contact-details">
-          <p class="contact-name">${c.name}</p>
-          <p class="contact-email">${c.email}</p>
-      </div>
-  </div>`;
+  let initials = getInitials(c.name);
+  let bg = getBackgroundForName(c.name);
+  saveContactIconInFireBase(c, initials, bg);
+  return { initials, bg };
 }
 
 function getBackgroundForName(name) {
@@ -189,7 +168,7 @@ function openContactItem(name, email, phone) {
   slideEfekt();
   goToContactInfoForMobile();
   detailViewOpen = true;
- }
+}
 
 function goToContactInfoForMobile() {
   if (document.documentElement.clientWidth < 800) {
@@ -220,30 +199,24 @@ function backToContacts() {
   }
 }
 
-
 window.addEventListener("resize", function () {
   const browserWidth = document.documentElement.clientWidth;
   let contacts = document.getElementById("contacts");
   let contactDetailContainer = document.getElementById("contactDetailContainer");
   let backArrow = document.getElementById("backArrow");
   if (!contacts || !contactDetailContainer || !backArrow) return;
-
   if (browserWidth >= 800) {
-    // Desktop: Beide Bereiche anzeigen, Rück-Button verstecken
     contacts.classList.remove("d-none");
     contactDetailContainer.classList.remove("d-none");
     contactDetailContainer.classList.add("d-flex");
     backArrow.classList.add("d-none");
   } else {
-    // Mobile: Unterschiedliche Zustände abhängig vom detailViewOpen-Zustand
     if (detailViewOpen) {
-      // Detailbereich ist offen: Kontakte ausblenden, Detailbereich anzeigen, Rück-Button sichtbar machen
       contacts.classList.add("d-none");
       contactDetailContainer.classList.remove("d-none");
       contactDetailContainer.classList.add("d-flex");
       backArrow.classList.remove("d-none");
     } else {
-      // Detailbereich ist geschlossen: Kontakte anzeigen, Detailbereich ausblenden, Rück-Button ausblenden
       contacts.classList.remove("d-none");
       contactDetailContainer.classList.remove("d-flex");
       contactDetailContainer.classList.add("d-none");
@@ -252,7 +225,6 @@ window.addEventListener("resize", function () {
   }
 });
 
-
 function slideEfekt() {
   let contactDetailView = document.getElementById("contactDetailView");
   contactDetailView.classList.remove("slide-in");
@@ -260,28 +232,6 @@ function slideEfekt() {
   setTimeout(() => {
     contactDetailView.classList.add("slide-in");
   }, 10);
-}
-
-function generateContactDetails(bg, initials, name, email, phone) {
-  return `
-    <div class="detail-avatar-name">
-      <div class="contact-detail-avatar" id="detailAvatar" style="background-image: url('${bg}'); background-size: cover; background-position: center;">
-        ${initials}
-      </div>
-      <div class="edit-delete">
-        <h2 id="detailName">${name}</h2>
-        <img src="/img/edit_contacts.png" alt="" onclick="editContact('${name}', '${email}', '${phone}', '${initials}', '${bg}') ">
-        <img src="/img/delete-contact.png" alt="" onclick="deleteContact('${email}')">
-      </div>
-    </div>
-    <div class="email-phone">
-      <p>Contact Information</p>
-      <b>Email</b>
-      <p class="email" id="detailEmail">${email}</p>
-      <b>Phone</b>
-      <p class="phone" id="detailPhone">${phone}</p>
-    </div>
-  `;
 }
 
 function contactItemClicked(itemElement) {
@@ -336,17 +286,13 @@ function saveNewContact() {
   overlayForContactSuccesfullyCreated();
 }
 
-
 function overlayForContactSuccesfullyCreated() {
   const overlay = document.getElementById("contactSuccesfullyCreated");
   const detailContainer = document.getElementById("contactDetailContainer");
-
   const containerRect = detailContainer.getBoundingClientRect();
   const computedStyle = getComputedStyle(detailContainer);
   const paddingLeft = parseFloat(computedStyle.paddingLeft);
-
   overlay.style.left = containerRect.left + paddingLeft + "px";
-
   overlay.classList.remove("d-none");
   setTimeout(() => overlay.classList.add("show"), 10);
   setTimeout(() => {
@@ -383,7 +329,6 @@ function deleteValue() {
   document.getElementById("contactPhone").value = "";
 }
 
-
 function editContact(name, email, phone, initials, bg) {
   currentContact = { name, email, phone };
   let editContactOverlay = document.getElementById("editContactOverlay");
@@ -402,18 +347,15 @@ function editContact(name, email, phone, initials, bg) {
 }
 
 function updateContactArray(newName, newEmail, newPhone) {
-
-    contactsArray = contactsArray.filter((contact) => contact.email.toLowerCase() !== currentContact.email.toLowerCase());
-    contactsArray.push({ email: newEmail, name: newName, phone: newPhone});
+  contactsArray = contactsArray.filter((contact) => contact.email.toLowerCase() !== currentContact.email.toLowerCase());
+  contactsArray.push({ email: newEmail, name: newName, phone: newPhone });
 }
 
 function updateDetailView(newName, newEmail, newPhone) {
-  // Aktualisiere die Detailansicht, wenn sie sichtbar ist
   let detailView = document.getElementById("contactDetailView");
   if (!detailView.classList.contains("d-none")) {
     const vars = getContactVars({ name: newName });
     detailView.innerHTML = generateContactDetails(vars.bg, vars.initials, newName, newEmail, newPhone);
-    // Optional: erneuter Slide-Effekt
     slideEfekt();
   }
 }
