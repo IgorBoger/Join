@@ -111,7 +111,7 @@ function getBackgroundForName(name) {
   const index = sum % bgImages.length;
   return bgImages[index];
 }
-
+//
 function openContactItem(name, email, phone) {
   const initials = getInitials(name);
   const bg = getBackgroundForName(name);
