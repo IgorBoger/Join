@@ -17,6 +17,7 @@ function getRegisterData() {
 
 function areAllFieldsFilled({ name, email, password, confirmPassword }) {
   if (name === "" || email === "" || password === "" || confirmPassword === "") {
+    showWarningOverlay(incompleteFieldsTemplate());
     return false;
   } else {
     return true;

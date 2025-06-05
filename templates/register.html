@@ -47,7 +47,7 @@
           <h2>Sign up</h2>
           <div class="blue-horizontal-line"></div>
         </div>
-        <form onsubmit="signUp(event)">
+        <form novalidate>
             <div class="input-field">
               <div class="login-input-wrapper">
               <input type="name" id="registerName" placeholder="Name" autocomplete="username" required />
@@ -96,7 +96,7 @@
             <div class="privacy-line"><span>I accept the</span> <a class="privacy-policy" href="../templates/privacy_policy.html"> Privacy policy</a></div>
           </div>
           <div id="privacyDiscard">*Privacy policy must be accepted!</div>
-          <div class="signup-btn-wrapper"><button type="submit" class="signup-btn">Sign up</button></div>
+          <div class="signup-btn-wrapper"><button onclick="signUp(event)" type="submit" class="signup-btn">Sign up</button></div>
         </form>
       </div>
     </main>
