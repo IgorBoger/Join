@@ -32,7 +32,7 @@
   margin-top: 0;
   margin-bottom: 20px;
   color: #2a3647;
-  font-size: clamp(2rem, 6vw, 3rem);
+  font-size: clamp(2rem, 6vw, 61px);
 }
 
 .signup-box form {
@@ -53,7 +53,9 @@
   padding: 12px;
   border: none;
   border-radius: 8px;
-  font-size: 14px;
+  font-family: "Inter", sans-serif;
+  font-size: 21px;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s ease;
   width: clamp(5rem, 20vw, 10rem);
@@ -69,7 +71,7 @@
   justify-content: center;
   margin: 16px 0px 16px;
   gap: 8px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .privacy-policy {
