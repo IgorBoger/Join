@@ -158,6 +158,9 @@
         flex-direction: column;
     }
 
+    #taskInfoDialog {
+        padding: 20px;
+    }
 
     .priority-button {
         width: 121px;

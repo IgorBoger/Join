@@ -46,7 +46,7 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  padding: 40px 40px 40px;
+  padding: 40px;
   background-color: white;
   border-radius: 30px;
   width: clamp(300px, 40vw, 600px);
@@ -84,7 +84,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(20px, 3vw, 20px);
 }
 
 
@@ -93,24 +93,23 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  font-size: clamp(16px, 1.8vw, 20px);
+  font-size: clamp(20px, 3vw, 20px);
 }
 
 
 .task-overlay-description {
-  font-size: clamp(16px, 2vw, 20px);
+  font-size: clamp(20px, 3vw, 20px);
 }
 
 
-.greyColor {
-  color: #2A3647;
+.text-steel-blue {
+  color: rgba(66, 82, 110, 1);
 }
 
 
 .assigned-to {
   margin-bottom: 10px;
   font-size: clamp(20px, 3vw, 20px);
-  color: #2A3647;
 }
 
 
@@ -142,7 +141,6 @@
 
 .title-subtask {
   font-size: clamp(20px, 3vw, 20px);
-  color: #2A3647;
 }
 
 

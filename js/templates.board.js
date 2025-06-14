@@ -77,11 +77,11 @@ function taskDetailTemplate(task, user) {
         <span class="task-overlay-description">${task.description}</span>
         <div class="prio-and-date-section">
         <div class="date-section">
-          <span class="greyColor">Due date:</span>
+          <span class="text-steel-blue">Due date:</span>
           <p>${formatDate(task.date)}</p>
         </div>
         <div class="prio-section">
-          <span class="greyColor">Priority:</span>
+          <span class="text-steel-blue">Priority:</span>
           <div class="task-prio">
             <p>${capitalize(task.priority)}</p>
             <img src="${renderPriorityIcon(task)}" alt="">
@@ -89,11 +89,11 @@ function taskDetailTemplate(task, user) {
         </div>
         </div>
         <div class="contacts-assignment">
-          <span class="assigned-to">Assigned To:</span>
+          <span class="assigned-to text-steel-blue">Assigned To:</span>
           <div id="contactsContainer">${loopTaskContacts(task, user)}</div>
         </div>
         <div class="task-overlay-subtasks">
-          <span class="title-subtask">Subtasks</span>
+          <span class="title-subtask text-steel-blue">Subtasks</span>
           <div id="subtasksList">${loopTaskSubtasks(task, user)}</div>
         </div>
         </div>
