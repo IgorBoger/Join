@@ -8,58 +8,6 @@ let detailViewOpen = false;
 
 let contactsArray = [];
 
-const basicContacts = [
-  {
-    name: "Alice Johnson",
-    email: "alice.johnson@example.com",
-    phone: "+1 555-123-4567",
-  },
-  {
-    name: "Bob Smith",
-    email: "bob.smith@example.com",
-    phone: "+1 555-987-6543",
-  },
-  {
-    name: "Charlie Lee",
-    email: "charlie.lee@example.com",
-    phone: "+1 555-222-3344",
-  },
-  {
-    name: "Diana Adams",
-    email: "diana.adams@example.com",
-    phone: "+1 555-444-7788",
-  },
-  {
-    name: "Ethan Wright",
-    email: "ethan.wright@example.com",
-    phone: "+1 555-666-1122",
-  },
-  {
-    name: "Fiona Green",
-    email: "fiona.green@example.com",
-    phone: "+1 555-321-7654",
-  },
-  {
-    name: "George Harris",
-    email: "george.harris@example.com",
-    phone: "+1 555-888-9900",
-  },
-  {
-    name: "Hannah Clark",
-    email: "hannah.clark@example.com",
-    phone: "+1 555-111-2233",
-  },
-  {
-    name: "Ian Baker",
-    email: "ian.baker@example.com",
-    phone: "+1 555-444-5566",
-  },
-  {
-    name: "Julia Carter",
-    email: "julia.carter@example.com",
-    phone: "+1 555-999-0001",
-  },
-];
 
 const bgImages = [
   "../img/variante1.png",
@@ -82,24 +30,6 @@ const bgImages = [
   "../img/variante14.png",
   "../img/variante15.png",
 ];
-
-async function saveBasicContacts() {
-  contactId = await getIdFromDataBase("contactId");
-  for (let i = 0; i < basicContacts.length; i++) {
-    const contact = basicContacts[i];
-    const safeKey = sanitizeEmail(contact.email);
-    const path = "contacts/" + safeKey;
-    const exists = await isDuplicateEmail(path);
-    if (!exists) {
-      contact.id = contactId;
-      await putData(path, contact);
-      contactId += 1;
-    } else {
-      continue;
-    }
-  }
-  await putIdToDataBase("contactId", contactId);
-}
 
 
 /**

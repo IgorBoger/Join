@@ -91,7 +91,6 @@ function showNoContactsMessage() {
  */
 async function displayContactsByAlphabet() {
   contactsArray = [];
-  // saveBasicContacts();
   await saveContactsToArray();
   if (contactsArray.length === 0) {
     showNoContactsMessage();
