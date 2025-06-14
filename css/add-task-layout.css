@@ -10,11 +10,10 @@
 
 
 .add-task-page-title {
-  font-size: 61px;
+  font-size: clamp(47px, 6vw, 61px);
   font-family: "Inter";
   margin: 0;
-  padding-top: 40px;
-  padding-bottom: 48px;
+  padding: 36px 0 36px;
 }
 
 
@@ -161,4 +160,3 @@
   pointer-events: auto;
   transform: translateX(-50%);
 }
-

@@ -215,13 +215,15 @@ input[type="date"]:valid {
 
 #logedInUser {
   color: rgb(41, 171, 226);
-  font-size: clamp(24px, 7vw, 64px);
+  font-size: clamp(47px, 6vw, 64px);
+  font-weight: 700;
 }
 
 
 #logedInGreeting {
-  font-size: clamp(24px, 7vw, 64px);
+  font-size: clamp(36px, 6vw, 47px);
   margin-bottom: 0;
+  font-weight: 400;
 }
 
 
