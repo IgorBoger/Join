@@ -18,6 +18,29 @@ async function doesContactExists(emailValue) {
 
 
 /**
+ * Checks if a contact with the same email, name, or phone already exists.
+ * Shows a warning overlay if a match is found.
+ * @param {Object} contactData - The contact data to check.
+ * @param {string} contactData.emailValue - Email to check.
+ * @param {string} contactData.nameValue - Name to check.
+ * @param {string} contactData.phoneValue - Phone number to check.
+ * @returns {Promise<boolean>} True if duplicate found, otherwise false.
+ */
+async function isContactInfoTaken(contactData) {
+  const response = await fetch(BASE_URL + "contacts" + ".json");
+  const data = await response.json();
+  if (!data) return false;
+  for (const key in data) {
+    if (data[key].email === contactData.emailValue || data[key].name === contactData.nameValue || data[key].phone === contactData.phoneValue) {
+      showWarningOverlay(contactAlreadyExistsTemplate());
+      return true;
+    }
+  }
+  return false;
+}
+
+
+/**
  * Validates the presence and uniqueness of the "@" character in an email string.
  * @param {string} trimmed - The trimmed email string.
  * @param {number} atIndex - The index of the first "@" character.

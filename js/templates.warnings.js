@@ -172,3 +172,21 @@ function incompleteFieldsTemplate() {
     </div>
     `.trim();
 }
+
+
+/**
+ * Returns a warning template for duplicate contact data.
+ * @returns {string} HTML string for duplicate contact warning.
+ */
+function contactAlreadyExistsTemplate() {
+  return `
+  <div class="error-warning">
+    <div class="countdown">5</div>
+    <p class="email-warning-title">Contact creation issue:</p>
+    <ul class="email-warning-list">
+      <li>A contact with this data already exists</li>
+      <li>Duplicate email, name, or phone number detected</li>
+    </ul>
+  </div>
+  `.trim();
+}

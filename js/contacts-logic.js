@@ -8,7 +8,7 @@ async function saveNewContactToDataBase(event) {
   event.stopPropagation();
   const contactData = await getNewContactData();
   if (!validateContactData(contactData)) return;
-  if (await contactAlreadyExists(contactData.emailValue)) return;
+  if (await isContactInfoTaken(contactData)) return;
   if (!(await validateContactInputs(
     contactData.emailValue,
     contactData.phoneValue,
