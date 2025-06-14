@@ -68,11 +68,11 @@ async function prepareAndValidateTask() {
     showWarningOverlay(taskMissingFieldsTemplate());
     return null;
   }
-  const taskId = await getData("taskId");
-  const dataSafe = taskDataStorage();
   if (!restrictAddingTask()) {
     return null;
   }
+  taskId = await getData("taskId");
+  const dataSafe = await taskDataStorage();
   return { taskId, dataSafe };
 }
 
