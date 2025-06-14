@@ -183,7 +183,7 @@ function ifCategoryBoxOpen(event) {
 
 
 /**
- * Displays a warning overlay with the given message and a countdown timer.
+ * Displays a warning overlay with the given message.
  * @param {string} message - The HTML content to show in the warning dialog.
  */
 function showWarningOverlay(message) {
@@ -192,8 +192,7 @@ function showWarningOverlay(message) {
   dialog.innerHTML = message;
   overlay.classList.replace("hidden", "show");
   setTimeout(() => dialog.classList.add("show"), 10);
-  const countdown = document.querySelector(".countdown");
-  countdownThenCloseOverlay(countdown);
+  countdownThenCloseOverlay();
 }
 
 
@@ -201,18 +200,11 @@ function showWarningOverlay(message) {
  * Counts down from 5 seconds, updates overlay countdown, then closes it.
  * @param {HTMLElement} countdown - The countdown display element.
  */
-function countdownThenCloseOverlay(countdown) {
-  let number = 5;
-  countdown.innerText = number;
-
+function countdownThenCloseOverlay() {
   const interval = setInterval(() => {
-    number--;
-    countdown.innerText = number;
-    if (number === 0) {
       clearInterval(interval);
       hideWarningOverlay();
-    }
-  }, 1000);
+  }, 3000);
 }
 
 
