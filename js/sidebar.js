@@ -32,6 +32,7 @@ function determineSidebarLayout(user, onlyViewer, footer) {
  */
 function setUserSideBar(footer) {
   showAllUserButtons();
+  if (!footer) return;
   if (window.innerWidth > 1000) {
     footer.classList.remove("d-none");
   } else {

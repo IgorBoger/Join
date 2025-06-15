@@ -240,7 +240,7 @@ function tasksDialogTemplate() {
                 <div class="subtask-section">
                 <span class="field-label task-subtitle" for="description">Subtask</span>
                 <div class="subtask-input-wrapper edit-form-size">
-                <input onfocus="showActionBtns()" onkeydown="checkShiftSubtask(event)" class="edit-form-size form-subtask form-border" id="subtaskInput" placeholder="Add new subtask" minlength="1" type="text">
+                <input onfocus="showActionBtns()" onkeydown="checkShiftSubtask(event)" class="edit-form-size form-subtask form-border subtask-text-limit" id="subtaskInput" placeholder="Add new subtask" minlength="1" type="text">
                 <div onclick="showActionBtns()" id="subtaskMainBtn" class="subtask-btn-wrapper subtask-main-btn">
                   <img src="../img/add.png" alt="write">
                 </div>

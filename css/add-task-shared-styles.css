@@ -395,3 +395,14 @@
 .add-task-bubble:hover, .board-task-bubble:hover {
   background-color: #3f516b;
 }
+
+.subtask-text-limit {
+  text-align: left;
+  padding-right: 30%;
+  overflow-x: auto;     
+  white-space: nowrap; 
+}
+
+.subtask-text-limit::-webkit-scrollbar {
+  display: none;
+}

@@ -126,6 +126,7 @@ function determineHeaderLayout(user) {
 function canShowHeaderHelpAndInitial() {
   const helpIcon = document.getElementById('helpIcon');
   const initial = document.getElementById('userInitial');
+  if (!helpIcon || !initial) return;
   if (window.innerWidth > 1000) {
     helpIcon.classList.remove('d-none');
     initial.classList.remove('d-none');
@@ -141,6 +142,7 @@ function canShowHeaderHelpAndInitial() {
  */
 function setGuestInitial() {
   const container = document.getElementById("userInitial");
+  if (!container) return;
   container.innerText = "G";
   container.onclick = toggleInitialDropdown;
 }

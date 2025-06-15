@@ -116,6 +116,7 @@
     align-items: center;
     gap: 8px;
     min-height: 40px;
+    max-width: 70%;
 }
 
 
