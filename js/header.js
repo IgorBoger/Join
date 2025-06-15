@@ -2,7 +2,7 @@
  * Toggles the visibility of the user initials dropdown.
  * Handles separate behavior for mobile and desktop views.
  * Adds a document-level click listener to close the dropdown when clicking outside.
- */ 
+ */
 function toggleInitialDropdown() {
   const dropdown = document.getElementById("userDropdown");
   const isMobile = window.innerWidth <= 1000;
@@ -110,7 +110,7 @@ function determineHeaderLayout(user) {
       setGuestInitial();
       canShowHeaderHelpAndInitial();
       break;
-    default: 
+    default:
       setUserInitial(user.id);
       canShowHeaderHelpAndInitial();
       break;
@@ -154,10 +154,12 @@ function setGuestInitial() {
  */
 async function setUserInitial(userId) {
   const container = document.getElementById("userInitial");
+  if (!container) return;
   const initial = await searchForContactInitial(userId);
   container.innerText = initial || "U";
   container.onclick = toggleInitialDropdown;
 }
+
 
 
 /**
