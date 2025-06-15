@@ -41,7 +41,7 @@
 
   </head>
 
-  <body onload="taskPageOnLoad()" onresize="adjustSideBar()">
+  <body onload="taskPageOnLoad()" onresize="adjustSideBar(); adjustHeaderForUser()">
     <img id="createdTaskBanner" class="created-task-banner" src="../img/task-added-banner.png" alt="successfully created">
 
     <div id="warningOverlay" class="warning-overlay hidden" onclick="hideWarningOverlay()">

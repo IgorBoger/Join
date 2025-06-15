@@ -62,9 +62,9 @@ function waitForInclude() {
  */
 function initializeLegalNoticePage() {
   adjustSideBar();
+  adjustHeaderForUser();
   markCurrentPage();
   ifGuestShowDropdownHelp();
-  adjustInitialAfterLogin();
   adjustHelpForMobile();
   window.addEventListener("resize", adjustHelpForMobile);
 }

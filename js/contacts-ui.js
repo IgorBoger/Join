@@ -42,7 +42,7 @@ async function initializeContactsPage() {
     markCurrentPage();
     ifGuestShowDropdownHelp();
     await putFirstIdForTasksAndContacts("contactId");
-    adjustInitialAfterLogin();
+    adjustHeaderForUser();
     await renderContacts();
     findUserEmail();
     adjustHelpForMobile();

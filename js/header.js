@@ -71,34 +71,67 @@ function logout() {
 
 
 /**
- * Displays the dropdown help button if the current user is a "Guest" or "Viewer".
+ * Displays the dropdown help button if the current user is a "Guest".
  * Retrieves user data from localStorage and checks the user's name.
  * If the name matches, it makes the help button visible.
  */
 function ifGuestShowDropdownHelp() {
   const user = JSON.parse(localStorage.getItem("user"));
   const btn = document.querySelector(".dropdown-help");
-  if (user?.name === "Guest" || user?.name === "Viewer") {
+  if (user?.name === "Guest") {
     btn.classList.remove("d-none");
   }
 }
 
 
 /**
- * Adjusts the user initial or visibility of elements after login.
- * Handles special cases for "Guest" and "Viewer" users.
- * For regular users, it retrieves and sets their initial.
+ * Adjusts the header layout based on the logged-in user stored in localStorage.
+ * If no user is found, it exits early.
  */
-async function adjustInitialAfterLogin() {
+function adjustHeaderForUser() {
   const user = JSON.parse(localStorage.getItem("user"));
   if (!user) return;
 
-  if (user.name === "Guest") {
-    setGuestInitial();
-  } else if (user.name === "Viewer") {
-    hideViewerElements();
+  determineHeaderLayout(user);
+}
+
+
+/**
+ * Determines the header layout based on the user's name.
+ * Handles different behavior for "Viewer", "Guest", and other users.
+ *
+ * @param {Object} user - The user object retrieved from localStorage.
+ */
+function determineHeaderLayout(user) {
+  switch (user.name) {
+    case "Viewer":
+      break;
+    case "Guest":
+      setGuestInitial();
+      canShowHeaderHelpAndInitial();
+      break;
+    default: 
+      setUserInitial(user.id);
+      canShowHeaderHelpAndInitial();
+      break;
+  }
+}
+
+
+/**
+ * Toggles visibility of the help icon and user initial
+ * based on the current window width.
+ * Shows both if width > 1000px, otherwise hides the help icon.
+ */
+function canShowHeaderHelpAndInitial() {
+  const helpIcon = document.getElementById('helpIcon');
+  const initial = document.getElementById('userInitial');
+  if (window.innerWidth > 1000) {
+    helpIcon.classList.remove('d-none');
+    initial.classList.remove('d-none');
   } else {
-    await setUserInitial(user.id);
+    helpIcon.classList.add('d-none');
+    initial.classList.remove("d-none");
   }
 }
 
@@ -110,15 +143,6 @@ function setGuestInitial() {
   const container = document.getElementById("userInitial");
   container.innerText = "G";
   container.onclick = toggleInitialDropdown;
-}
-
-
-/**
- * Hides the initial and help icon for Viewer users.
- */
-function hideViewerElements() {
-  document.getElementById("userInitial").style.display = "none";
-  document.querySelector(".help-icon").style.display = "none";
 }
 
 

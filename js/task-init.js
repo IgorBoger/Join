@@ -50,7 +50,7 @@ async function setupTaskPageEnvironment() {
   adjustSideBar();
   markCurrentPage();
   ifGuestShowDropdownHelp();
-  adjustInitialAfterLogin();
+  adjustHeaderForUser();
   await putFirstIdForTasksAndContacts("taskId/");
 }
 

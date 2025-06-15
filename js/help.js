@@ -45,11 +45,11 @@ function waitForInclude() {
  */
 function initializeHelpPageFeatures() {
   ifGuestShowDropdownHelp();
-  adjustInitialAfterLogin();
+  adjustHeaderForUser();
+  adjustSideBar();
   ifHelpPageNoHelpIcon();
   adjustHelpForMobile();
   window.addEventListener("resize", adjustHelpForMobile);
-  displayLegalNoticeAndPrivacyPolicy();
 }
 
 

@@ -60,7 +60,7 @@ async function initializePageStructure() {
 async function prepareBoardEnvironment() {
   markCurrentPage();
   ifGuestShowDropdownHelp();
-  adjustInitialAfterLogin();
+  adjustHeaderForUser();
   await putFirstIdForTasksAndContacts("taskId")
   adjustSideBar();
 }
@@ -82,6 +82,17 @@ async function loadBoardTasks() {
   adjustHelpForMobile();
   window.addEventListener("resize", adjustHelpForMobile);
   checkIfMobileLayout();
+}
+
+
+/**
+ * handles all function for resize event.
+ */
+function boardOnResize() {
+  checkIfMobileLayout()
+  ifMobileAddTaskLayout()
+  adjustSideBar()
+  adjustHeaderForUser()
 }
 
 

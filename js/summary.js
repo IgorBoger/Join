@@ -55,8 +55,8 @@ function initializeSummaryUI() {
   updateGreeting("greetingUser", "theUser");
   markCurrentPage();
   adjustSideBar();
+  adjustHeaderForUser();
   ifGuestShowDropdownHelp();
-  adjustInitialAfterLogin();
   findToDoAmount();
   findDoneAmount();
   findUrgentTasksAmount();
