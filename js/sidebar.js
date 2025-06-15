@@ -1,55 +1,64 @@
 ﻿/**
- * Hides sidebar navigation buttons for Viewer users except for allowed ones.
+ * Adjusts the sidebar layout based on the logged-in user's role.
  */
 function adjustSideBar() {
-  const user = getStoredUser();
-  if (user && user.name === "Viewer") {
-    const buttons = document.querySelectorAll(".nav-button");
-    filterSidebarButtonsForViewer(buttons);
-  }
-}
-
-
-/**
- * Retrieves the stored user from localStorage.
- * @returns {{ name: string } | null} Parsed user object or null.
- */
-function getStoredUser() {
-  try {
-    return JSON.parse(localStorage.getItem("user"));
-  } catch {
-    return null;
-  }
-}
-
-
-/**
- * Hides all sidebar buttons except the allowed ones for a Viewer.
- * @param {NodeListOf<Element>} buttons - List of sidebar button elements.
- */
-function filterSidebarButtonsForViewer(buttons) {
-  const allowedIds = ["loginSidebarBtn", "privacyPolicySideBar", "legalNoticeSideBar"];
-  buttons.forEach((button) => {
-    if (!allowedIds.includes(button.id)) {
-      button.classList.add("d-none");
-    } else {
-      button.classList.remove("d-none");
-    }
-  });
-}
-
-
-/**
- * Determines when to display or hide the legal notice and privacy policy footer.
- */
-function displayLegalNoticeAndPrivacyPolicy() {
+  const onlyViewer = document.querySelector('.only-viewer');
   const footer = document.getElementById('sidebarFooter');
   const user = getLoggedInUser();
+  determineSidebarLayout(user, onlyViewer, footer);
+}
 
-  if (!footer || !user) return;
 
-  const shouldShow = shouldDisplayFooter(user.name, window.innerWidth);
-  footer.style.display = shouldShow ? 'flex' : 'none';
+/**
+ * Determines the sidebar layout based on the user's name.
+ * @param {Object} user - The logged-in user object.
+ * @param {HTMLElement} onlyViewer - Element visible only to viewers.
+ * @param {HTMLElement} footer - The sidebar footer element.
+ */
+function determineSidebarLayout(user, onlyViewer, footer) {
+    switch (user.name) {
+    case "Viewer":
+      setViewerSideBar(onlyViewer, footer);
+      break;
+    default: setUserSideBar(footer);
+      break;
+  }
+}
+
+
+/**
+ * Sets sidebar for regular users and shows footer on wide screens.
+ * @param {HTMLElement} footer - The sidebar footer element.
+ */
+function setUserSideBar(footer) {
+  showAllUserButtons();
+  if (window.innerWidth > 1000) {
+    footer.classList.remove("d-none");
+  } else {
+    footer.classList.add("d-none");
+  }
+}
+
+
+/**
+ * Sets sidebar for viewers and shows viewer-specific elements.
+ * @param {HTMLElement} onlyViewer - Element visible only to viewers.
+ * @param {HTMLElement} footer - The sidebar footer element.
+ */
+function setViewerSideBar(onlyViewer, footer) {
+  footer.classList.remove("d-none");
+  onlyViewer.classList.remove("d-none");
+}
+
+
+/**
+ * Displays all elements meant for logged-in users.
+ */
+function showAllUserButtons() {
+  const loggedInButtons = document.querySelectorAll('.only-logged-in');
+  loggedInButtons.forEach(btn => {
+    btn.classList.remove("d-none");
+  });
 }
 
 
@@ -63,18 +72,4 @@ function getLoggedInUser() {
   } catch {
     return null;
   }
-}
-
-
-/**
- * Determines if the footer should be displayed based on user role and screen size.
- * @param {string} userName - The name of the current user.
- * @param {number} screenWidth - The current window width.
- * @returns {boolean} True if footer should be shown, false otherwise.
- */
-function shouldDisplayFooter(userName, screenWidth) {
-  if (screenWidth <= 1000) {
-    return userName === "Viewer";
-  }
-  return true; // Always show on desktop for non-Viewer users
 }

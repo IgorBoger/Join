@@ -67,7 +67,6 @@ function initializeLegalNoticePage() {
   adjustInitialAfterLogin();
   adjustHelpForMobile();
   window.addEventListener("resize", adjustHelpForMobile);
-  displayLegalNoticeAndPrivacyPolicy();
 }
 
 

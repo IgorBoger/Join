@@ -16,7 +16,7 @@ async function taskPageOnLoad() {
     await setupTaskPageEnvironment();
     loadTaskPageData();
   } catch (error) {
-    console.log("error in taskPageOnLoad()");
+    console.log("error in taskPageOnLoad()", error);
   }
 }
 
@@ -47,11 +47,11 @@ function waitForSidebarAndHeader() {
  * @returns {Promise<void>}
  */
 async function setupTaskPageEnvironment() {
+  adjustSideBar();
   markCurrentPage();
   ifGuestShowDropdownHelp();
   adjustInitialAfterLogin();
   await putFirstIdForTasksAndContacts("taskId/");
-  displayLegalNoticeAndPrivacyPolicy();
 }
 
 

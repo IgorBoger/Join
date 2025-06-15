@@ -66,7 +66,6 @@ function initializeSummaryUI() {
   findOverallTasksAmount();
   adjustHelpForMobile();
   window.addEventListener("resize", adjustHelpForMobile);
-  displayLegalNoticeAndPrivacyPolicy();
 }
 
 

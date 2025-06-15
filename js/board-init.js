@@ -53,7 +53,7 @@ async function initializePageStructure() {
  * - Shows dropdown help if the user is a guest.
  * - Adjusts the UI or data based on the initial login state.
  * - Ensures the first ID for tasks and contacts is set in the backend/storage.
- * - Displays the legal notice and privacy policy.
+ * - Displays sidebar.
  * 
  * This function is asynchronous because it awaits the completion of setting initial IDs.
  */
@@ -62,7 +62,7 @@ async function prepareBoardEnvironment() {
   ifGuestShowDropdownHelp();
   adjustInitialAfterLogin();
   await putFirstIdForTasksAndContacts("taskId")
-  displayLegalNoticeAndPrivacyPolicy();
+  adjustSideBar();
 }
 
 

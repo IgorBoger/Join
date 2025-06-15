@@ -33,6 +33,11 @@ li {
 }
 
 
+.d-block {
+  display: block !important;
+}
+
+
 .main {
   display: grid;
   grid-template-columns: 200px 1fr;
@@ -360,5 +365,4 @@ input[type="date"]:valid {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-
 }
