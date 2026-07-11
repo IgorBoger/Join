@@ -1,2 +1,16 @@
-# Temporär: VSCode-Projektkonfiguration ausschließen
+# Editor and OS files
 .vscode/
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Generated documentation / build output
+out/
+
+# Archives and temporary files
+*.zip
+*.log
+
+# Local helper scripts
+up.bat
+up.sh
