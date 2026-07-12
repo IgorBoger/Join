@@ -134,6 +134,7 @@
     font-weight: 400;
     font-size: 20px;
     cursor: default;
+    white-space: nowrap;
 }
 
 
@@ -216,19 +217,19 @@
     justify-content: center;
     align-items: center;
     background-color: #fff;
-    padding: 48px 115px;
+    padding: 48px clamp(60px, 10vw, 115px);
     border-radius: 30px;
-    gap: 32px;
+    gap: clamp(24px, 7vw, 32px);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 422px;
-    height: 353px;
+    width: clamp(300px, 35vw, 422px);
+    height: clamp(300px, 50vw, 353px);
 }
 
 
 .log-in-box h2 {
     font-weight: 700;
-    font-size: 61px;
+    font-size: clamp(47px, 5vw, 61px);
     margin: 0;
     padding-bottom: 16px;
     color: #2a3647;
@@ -317,6 +318,7 @@
     font-size: 21px;
     font-weight: 700;
     font-weight: bold;
+    white-space: nowrap;
 }
 
 

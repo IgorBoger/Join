@@ -8,6 +8,12 @@
 
 
 @media (max-width: 800px) {
+        body {
+                height: 100vh;
+                height: 100dvh;
+                overflow: hidden;
+        }
+
         .register-banner {
                 bottom: 20vh;
                 height: 50px;
@@ -16,19 +22,30 @@
 
 
         .signup-join-logo {
+                top: 20px;
+                left: 20px;
                 width: 70px;
         }
 
 
         .signup-main {
                 height: calc(100vh - 60px);
+                height: calc(100dvh - 60px);
         }
 
 
         .signup-box {
-                height: 450px;
-                padding: 32px 16px;
+                width: clamp(300px, calc(100vw - 32px), 422px);
+                height: clamp(390px, 68dvh, 450px);
+                padding: clamp(24px, 5vw, 32px) 16px;
                 margin: 100px 16px 0;
+                gap: clamp(20px, 4dvh, 32px);
+                box-sizing: border-box;
+        }
+
+
+        .signup-box h2 {
+                font-size: clamp(42px, 8vw, 61px);
         }
 
 
@@ -39,6 +56,28 @@
 
         .signup-arrow {
                 top: 32px
+        }
+
+
+        .signup-box form {
+                gap: clamp(14px, 2.5dvh, 20px);
+        }
+
+
+        .input-field input {
+                font-size: clamp(16px, 4vw, 20px);
+        }
+
+
+        .signup-btn {
+                font-size: clamp(18px, 4vw, 21px);
+                padding: clamp(8px, 2dvh, 12px);
+        }
+
+
+        .privacy-line,
+        #privacyDiscard {
+                font-size: clamp(14px, 3.5vw, 16px);
         }
 
 
@@ -61,16 +100,22 @@
 
 
         .signup-box {
-                width: 90%;
-                height: 400px;
-                padding: 32px 16px;
+                width: clamp(300px, calc(100vw - 32px), 422px);
+                height: clamp(360px, 63dvh, 400px);
+                padding: clamp(20px, 7vw, 32px) 16px;
                 margin-top: 120px;
-                gap: 20px;
+                gap: clamp(16px, 3dvh, 20px);
         }
 
 
         .signup-box form {
-                gap: 12px;
+                gap: clamp(10px, 2dvh, 12px);
+        }
+
+
+        .signup-box h2 {
+                font-size: clamp(36px, 11vw, 47px);
+                padding-bottom: 8px;
         }
 
 
@@ -79,4 +124,35 @@
         }
 
 
+}
+
+
+@media (max-height: 760px) {
+        .signup-box {
+                height: clamp(350px, 68dvh, 400px);
+                gap: clamp(14px, 2.5dvh, 20px);
+        }
+
+
+        .signup-box h2 {
+                font-size: clamp(36px, 5.5vw, 47px);
+                padding-bottom: 8px;
+        }
+
+
+        .signup-box form {
+                gap: clamp(8px, 1.8dvh, 12px);
+        }
+
+
+        .input-field input {
+                height: 40px;
+                font-size: clamp(16px, 5vw, 20px);
+        }
+
+
+        .signup-btn {
+                font-size: clamp(16px, 5vw, 21px);
+                padding: 8px 12px;
+        }
 }
